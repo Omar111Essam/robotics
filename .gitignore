@@ -6,6 +6,9 @@ logs/
 .catkin_tools/
 .catkin_workspace
 
+# auto-created symlink to /usr/share/catkin/cmake/toplevel.cmake
+src/CMakeLists.txt
+
 # Python bytecode
 *.pyc
 *.pyo
