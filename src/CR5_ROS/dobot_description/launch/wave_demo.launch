@@ -1,0 +1,26 @@
+<launch>
+  <!--
+    Wave demo launch.
+    Loads the CR5 URDF, runs robot_state_publisher and RViz, and starts the
+    wave_demo.py node which publishes /joint_states (standing pose, then a
+    waving motion). No joint_state_publisher_gui is used.
+  -->
+  <arg name="dobot_type" default="cr5" doc="DOBOT_TYPE [cr3, cr5]" />
+
+  <param name="robot_description"
+         textfile="$(find dobot_description)/urdf/$(arg dobot_type)_robot.urdf" />
+
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher"
+        type="robot_state_publisher" />
+
+  <node name="cr5_wave_demo"
+        pkg="dobot_description"
+        type="wave_demo.py"
+        output="screen" />
+
+  <node name="rviz"
+        pkg="rviz"
+        type="rviz"
+        args="-d $(find dobot_description)/rviz/urdf.rviz" />
+</launch>

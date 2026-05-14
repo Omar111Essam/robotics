@@ -1,0 +1,22 @@
+# catkin workspace generated dirs
+build/
+devel/
+install/
+logs/
+.catkin_tools/
+.catkin_workspace
+
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
