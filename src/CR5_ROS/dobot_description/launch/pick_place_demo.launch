@@ -1,0 +1,26 @@
+<launch>
+  <!--
+    Pick-and-place sim demo. Mirrors wave_demo.launch but runs
+    pick_place_demo.py, which publishes /joint_states for the arm and the
+    two prismatic finger joints, plus a visualization_msgs/Marker box on
+    /pick_place_marker.
+  -->
+  <arg name="dobot_type" default="cr5" doc="DOBOT_TYPE [cr3, cr5]" />
+
+  <param name="robot_description"
+         textfile="$(find dobot_description)/urdf/$(arg dobot_type)_robot.urdf" />
+
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher"
+        type="robot_state_publisher" />
+
+  <node name="cr5_pick_place_demo"
+        pkg="dobot_description"
+        type="pick_place_demo.py"
+        output="screen" />
+
+  <node name="rviz"
+        pkg="rviz"
+        type="rviz"
+        args="-d $(find dobot_description)/rviz/pick_place_demo.rviz" />
+</launch>

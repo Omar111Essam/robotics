@@ -265,4 +265,105 @@
     <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
   </joint>
 
+  <!-- Simple parallel-jaw gripper attached to Link6.
+       Link6's +z is the tool axis. gripper_base sits on the flange and
+       the two fingers slide symmetrically along the gripper x-axis. -->
+  <link name="gripper_base">
+    <visual>
+      <origin xyz="0 0 0.02" rpy="0 0 0" />
+      <geometry>
+        <box size="0.08 0.06 0.04" />
+      </geometry>
+      <material name="gripper_body">
+        <color rgba="0.25 0.25 0.28 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.02" rpy="0 0 0" />
+      <geometry>
+        <box size="0.08 0.06 0.04" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1" />
+      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4" />
+    </inertial>
+  </link>
+
+  <joint name="gripper_base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="Link6" />
+    <child link="gripper_base" />
+  </joint>
+
+  <!-- tool_tip is the centre between the fingers. Used as the TF that the
+       picked-box marker rides on during transport. -->
+  <link name="tool_tip" />
+
+  <joint name="tool_tip_joint" type="fixed">
+    <origin xyz="0 0 0.09" rpy="0 0 0" />
+    <parent link="gripper_base" />
+    <child link="tool_tip" />
+  </joint>
+
+  <link name="left_finger">
+    <visual>
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <geometry>
+        <box size="0.006 0.02 0.06" />
+      </geometry>
+      <material name="finger_body">
+        <color rgba="0.15 0.15 0.18 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <geometry>
+        <box size="0.006 0.02 0.06" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01" />
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5" />
+    </inertial>
+  </link>
+
+  <joint name="left_finger_joint" type="prismatic">
+    <origin xyz="0 0 0.04" rpy="0 0 0" />
+    <parent link="gripper_base" />
+    <child link="left_finger" />
+    <axis xyz="1 0 0" />
+    <limit lower="0.0" upper="0.05" effort="10" velocity="0.5" />
+  </joint>
+
+  <link name="right_finger">
+    <visual>
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <geometry>
+        <box size="0.006 0.02 0.06" />
+      </geometry>
+      <material name="finger_body_r">
+        <color rgba="0.15 0.15 0.18 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <geometry>
+        <box size="0.006 0.02 0.06" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01" />
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5" />
+    </inertial>
+  </link>
+
+  <joint name="right_finger_joint" type="prismatic">
+    <origin xyz="0 0 0.04" rpy="0 0 0" />
+    <parent link="gripper_base" />
+    <child link="right_finger" />
+    <axis xyz="-1 0 0" />
+    <limit lower="0.0" upper="0.05" effort="10" velocity="0.5" />
+  </joint>
+
 </robot>

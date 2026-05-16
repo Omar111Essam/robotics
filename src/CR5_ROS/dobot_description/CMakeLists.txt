@@ -15,5 +15,6 @@ endforeach(dir)
 
 catkin_install_python(PROGRAMS
   scripts/wave_demo.py
+  scripts/pick_place_demo.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
