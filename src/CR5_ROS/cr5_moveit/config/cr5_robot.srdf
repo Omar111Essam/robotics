@@ -39,4 +39,14 @@
     <disable_collisions link1="Link4" link2="Link6" reason="Never" />
     <disable_collisions link1="Link4" link2="base_link" reason="Never" />
     <disable_collisions link1="Link5" link2="Link6" reason="Adjacent" />
+    <disable_collisions link1="Link6" link2="gripper_base" reason="Adjacent" />
+    <disable_collisions link1="gripper_base" link2="left_finger" reason="Adjacent" />
+    <disable_collisions link1="gripper_base" link2="right_finger" reason="Adjacent" />
+    <disable_collisions link1="left_finger" link2="right_finger" reason="Default" />
+    <disable_collisions link1="Link5" link2="gripper_base" reason="Never" />
+    <disable_collisions link1="Link5" link2="left_finger" reason="Never" />
+    <disable_collisions link1="Link5" link2="right_finger" reason="Never" />
+    <disable_collisions link1="Link4" link2="gripper_base" reason="Never" />
+    <disable_collisions link1="Link4" link2="left_finger" reason="Never" />
+    <disable_collisions link1="Link4" link2="right_finger" reason="Never" />
 </robot>

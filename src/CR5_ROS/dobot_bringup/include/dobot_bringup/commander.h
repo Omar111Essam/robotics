@@ -94,7 +94,7 @@ public:
         : current_joint_{}, tool_vector_{}, real_time_data_{}, is_running_(false)
     {
         is_running_ = false;
-        real_time_tcp_ = std::make_shared<TcpClient>(ip, 30003);
+        real_time_tcp_ = std::make_shared<TcpClient>(ip, 30004);
         dash_board_tcp_ = std::make_shared<TcpClient>(ip, 29999);
     }
 
